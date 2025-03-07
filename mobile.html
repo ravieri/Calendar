@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogos em Destaque - Mobile</title>
+    <link rel="stylesheet" href="styles-mobile.css">
+    <style>
+        /* Estilos de botões melhorados */
+        .sport-btn {
+            background-color: #6a0dad;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            margin: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .sport-btn:hover {
+            background-color: #9a4cdd;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .sport-btn:active {
+            transform: scale(0.98);
+            background-color: #7e41c4;
+        }
+
+        /* Animação suave para imagens */
+        .sport-image img {
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .sport-image img.loaded {
+            opacity: 1;
+        }
+
+        /* Configuração para deslizar os botões de esportes no mobile */
+        .sports-buttons {
+            display: flex;
+            overflow-x: auto;
+            gap: 10px;
+            padding: 10px;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch; /* Suaviza o deslizamento em iOS */
+        }
+
+        .sport-btn {
+            flex-shrink: 0;
+            scroll-snap-align: start;
+            white-space: nowrap;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <img src="h2bet_logo.png" alt="H2BET" class="header-logo"> 
+    <div class="header-title">
+        <span class="highlight-link" onclick="location.href='events.html'">Eventos em Destaque</span>
+    </div>
+</header>
+
+<h1>Jogos em Destaque</h1>
+
+<!-- Seletor de Intervalo de Datas -->
+<div class="month-selector-container">
+    <label for="date">Selecionar intervalo de datas:</label>
+    <select id="date" class="custom-month-selector" onchange="showSports()">
+        <option value="1">11/10/2024 - 18/10/2024</option>
+        <option value="2">19/10/2024 - 25/10/2024</option>
+        <option value="3">26/10/2024 - 01/11/2024</option>
+    </select>
+</div>
+
+<!-- Container dos Esportes com scroll horizontal no mobile -->
+<div id="sports" class="sports" style="display:none;">
+    <h2>Esportes Disponíveis:</h2>
+    <div class="sports-buttons">
+        <button class="sport-btn" onclick="showSportImage('futebol')">Futebol</button>
+        <button class="sport-btn" onclick="showSportImage('tennis')">Tênis</button>
+        <button class="sport-btn" onclick="showSportImage('basquete')">Basquete</button>
+        <button class="sport-btn" onclick="showSportImage('cs')">CS 2.0</button>
+        <button class="sport-btn" onclick="showSportImage('mma')">MMA</button>
+        <button class="sport-btn" onclick="showSportImage('vollei')">Vôlei</button>
+    </div>
+</div>
+
+<!-- Container da Imagem do Esporte -->
+<div id="sport-image" class="sport-image" style="display:none;">
+    <h2>Imagem do Esporte:</h2>
+    <div id="sport-img-container">
+        <!-- As imagens dos esportes serão adicionadas aqui dinamicamente -->
+    </div>
+</div>
+
+<script>
+    // Função para exibir os esportes após a seleção de uma data
+    function showSports() {
+        document.getElementById('sports').style.display = 'block';
+        document.getElementById('sport-image').style.display = 'none'; // Oculta a imagem ao selecionar nova data
+    }
+
+    // Função para exibir as imagens de esportes ao clicar no botão do esporte
+    function showSportImage(sport) {
+        const date = document.getElementById('date').value; // Obtém a data selecionada
+        const imgContainer = document.getElementById('sport-img-container');
+        imgContainer.innerHTML = ''; // Limpa o conteúdo anterior
+
+        const sportImages = {
+            'futebol': {
+                '1': ['Brasil18-10.png', 'internacional18-10.png'],
+                '2': ['Brasil19-25.png', 'internacional19-25.png'],
+                '3': ['manu.webp', 'manu.webp']
+            },
+            'tennis': {
+                '1': 'tennis18-10.png',
+                '2': 'tennis19-25.png',
+                '3': 'manu.webp'
+            },
+            'basquete': {
+                '1': 'basquete18-10.png',
+                '2': 'basquete19-25.png',
+                '3': 'manu.webp'
+            },
+            'cs': {
+                '1': 'cs18-10.png',
+                '2': 'cs19-25.png',
+                '3': 'manu.webp'
+            },
+            'mma': {
+                '1': 'mma18-10.png',
+                '2': 'mma19-25.png',
+                '3': 'manu.webp'
+            },
+            'vollei': {
+                '1': 'vollei18-10.png',
+                '2': 'vollei19-25.png',
+                '3': 'manu.webp'
+            }
+        };
+
+        if (sportImages[sport] && sportImages[sport][date]) {
+            const images = sportImages[sport][date];
+            images.forEach(imgSrc => {
+                imgContainer.innerHTML += `<img src="${imgSrc}" alt="${sport}" style="width: 100%; max-width: 600px;">`;
+            });
+            document.getElementById('sport-image').style.display = 'block';
+        } else {
+            imgContainer.innerHTML = `<p>Imagens não disponíveis para este esporte e data.</p>`;
+        }
+    }
+</script>
+
+</body>
+</html>

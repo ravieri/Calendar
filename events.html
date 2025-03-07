@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ligas em Destaque</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Centralizar os títulos "LIGAS EM DESTAQUE" */
+        .header-title, h1 {
+            text-align: center; /* Centraliza os textos */
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <img src="h2bet_logo.png" alt="H2BET" class="header-logo"> 
+    <div class="header-title">
+        <span class="highlight-link" onclick="location.href='index.html'">CALENDARIO</span>
+    </div>
+</header>
+
+<h1>Ligas em Destaque</h1>
+
+<div class="month-selector-container">
+    <label for="month">Selecionar mês:</label>
+    <select id="month" class="custom-month-selector" onchange="showEvents()">
+        <option value="1">Janeiro</option>
+        <option value="2">Fevereiro</option>
+        <option value="3">Março</option>
+        <option value="4">Abril</option>
+        <option value="5">Maio</option>
+        <option value="6">Junho</option>
+        <option value="7">Julho</option>
+        <option value="8">Agosto</option>
+        <option value="9">Setembro</option>
+        <option value="10">Outubro</option>
+        <option value="11">Novembro</option>
+        <option value="12">Dezembro</option>
+    </select>
+</div>
+
+<div id="events" class="events">
+    <h2>Ligas Selecionadas:</h2>
+    <ul id="event-list" class="custom-event-list">
+        <!-- Eventos dinâmicos aparecerão aqui -->
+    </ul>
+</div>
+
+<script>
+    const eventsByMonth = {
+        1: [
+            '7ª Rodada da Champions League: 21 e 22 de Janeiro de 2025',
+            '8ª Rodada da Champions League: 29 de Janeiro de 2025'
+        ],
+        2: [
+            'Copa do Brasil - 1ª fase: 21 e 28 de fevereiro',
+            'Libertadores - Primeira Fase (Ida): 6-8 de fevereiro',
+            'Libertadores - Primeira Fase (Volta): 13-15 de fevereiro',
+            'Libertadores - Segunda Fase (Ida): 20-22 de fevereiro',
+            'Libertadores - Segunda Fase (Volta): 27-29 de fevereiro'
+        ],
+        3: [
+            'Copa do Brasil - 2ª fase: 6 e 13 de março',
+            'Libertadores - Terceira Fase (Ida): 5-7 de março',
+            'Libertadores - Terceira Fase (Volta): 12-14 de março'
+        ],
+        4: [
+            'Brasileirão Série A 2024: 13 de abril a 8 de dezembro',
+            'Série B do Campeonato Brasileiro 2024: 19 de abril a 26 de novembro',
+            'Libertadores - Fase de Grupos (Ida): 2-4 de abril, 9-11 de abril',
+            'Libertadores - Fase de Grupos (Ida): 23-25 de abril'
+        ],
+        5: [
+            'Copa do Brasil - 3ª fase: 1º e 22 de maio',
+            'Libertadores - Fase de Grupos (Volta): 7-9 de maio, 14-16 de maio',
+            'Libertadores - Fase de Grupos (Volta): 28-30 de maio',
+            'Semifinais da Champions League: 29/30 de Abril e 6/7 de Maio de 2025',
+            'Final da Champions League: 31 de Maio de 2025'
+        ],
+        7: [
+            'Copa do Brasil - Oitavas de final: 31 de julho e 7 de agosto',
+            'CONCACAF - Group Stage: 30 de Julho de 2024',
+            'Brasileirão',
+            'Libertadores',
+            'Sulamericana',
+            '2 a 7 - Pré-Olímpico masculino de basquete',
+            '21 - GP da Hungria',
+            '26 a 11 de agosto - Olimpíadas de Paris',
+            '28 - GP da Bélgica'
+        ],
+        8: [
+            'Premier League 2024/25: 16 de agosto a 25 de maio de 2025',
+            'Bundesliga 2024/25: 23 de agosto a 17 de maio de 2025',
+            'Serie A (Itália) 2024/25: 17 de agosto a 31 de maio de 2025',
+            'Libertadores - Oitavas de Final (Ida): 13-15 de agosto',
+            'Libertadores - Oitavas de Final (Volta): 20-22 de agosto',
+            'Sulamericana',
+            '1 - Início da Pré-temporada da NFL',
+            '20 a 29 - Etapa de Fiji da WSL',
+            '25 - GP da Holanda',
+            '26 a 8 de setembro - Us Open de tênis',
+            '28 a 8 de setembro - Jogos Paralímpicos de Paris'
+        ],
+        9: [
+            'Mundial de League of Legends (Fase de Entrada): 25 a 29 de setembro',
+            'VCT Game Changers Brazil - Etapa 3: 25 de setembro a 13 de outubro',
+            'Free Fire World Series (FFWS) Brasil: 28 de setembro',
+            'Copa do Brasil - Quartas de final: 28 de agosto e 12 de setembro',
+            'Libertadores - Quartas de Final (Ida): 17-19 de setembro',
+            'Libertadores - Quartas de Final (Volta): 24-26 de setembro',
+            '1ª Rodada da Champions League: 17 a 19 de Setembro de 2024',
+            'CONCACAF - Quartas de final: 24 de Setembro de 2024',
+            'Sulamericana',
+            '1 - GP da Itália',
+            '1 a 22 - Copa do Mundo feminina sub-20 de futebol',
+            '5 - Início da temporada regular da NFL',
+            '6 a 14 - Finals do surfe - San Clemente (EUA)'
+        ],
+        10: [
+            'Mundial de League of Legends (Fase Suíça): 3 a 7 de outubro e 10 a 13 de outubro',
+            'VCT Game Changers Brazil - Etapa 3: 25 de setembro a 13 de outubro',
+            'Mundial de League of Legends (Fase Eliminatória): 17 a 20 de outubro e 26 a 27 de outubro',
+            'BLAST Premier World Final: 30 de outubro a 3 de novembro',
+            'Libertadores - Semifinais (Ida): 22-24 de outubro',
+            'Libertadores - Semifinais (Volta): 29-31 de outubro',
+            'Copa do Brasil - Semifinais: 2 e 17 de outubro',
+            'Bellator 300: 20 de outubro',
+            '2ª Rodada da Champions League: 1 e 2 de Outubro de 2024',
+            '3ª Rodada da Champions League: 22 e 23 de Outubro de 2024',
+            'CONCACAF - Play-In: 22 de Outubro de 2024',
+            'CONCACAF - Semifinais: 22 de Outubro de 2024',
+            'Sulamericana',
+            '20 - GP dos Estados Unidos',
+            '24 - Início da NBA',
+            '27 - GP do México',
+            '28 a 3 de novembro - WTA Finals',
+            'Rolex Paris Masters: 28 de Outubro a 3 de Novembro de 2024'
+        ],
+        11: [
+            'Mundial de League of Legends (Grande Final): 2 de novembro',
+            'BLAST Premier World Final: 30 de outubro a 3 de novembro',
+            'Free Fire World Series (FFWS) Global Finals: 8 a 24 de novembro',
+            'Game Changers Championship Mundial: 8 a 17 de novembro',
+            'Libertadores - Final: 30 de novembro (Estádio Mâs Monumental, Buenos Aires)',
+            'Copa do Brasil - Final: 3 e 10 de novembro',
+            '4ª Rodada da Champions League: 5 e 6 de Novembro de 2024',
+            '5ª Rodada da Champions League: 26 e 27 de Novembro de 2024',
+            'CONCACAF - Final: 26 de Novembro a 3 de Dezembro de 2024',
+            'Sulamericana',
+            'GP do Brasil',
+            'Final da Copa do Brasil',
+            'Final Libertadores',
+            'Final Sulamericana',
+            'GP de Las Vegas',
+            'Belgrade Open: 3 a 9 de Novembro de 2024',
+            'Moselle Open: 3 a 9 de Novembro de 2024',
+            'Nitto ATP Finals: 10 a 17 de Novembro de 2024'
+        ],
+        12: [
+            'Copa do Mundo de Clubes 2024: 6 a 16 de dezembro',
+            '6ª Rodada da Champions League: 10 e 11 de Dezembro 2024',
+            'GP do Catar',
+            'GP de Abu Dhubai',
+            'Final do Brasileirão'
+        ]
+    };
+
+    function showEvents() {
+        const month = document.getElementById('month').value;
+        const eventList = document.getElementById('event-list');
+        const events = eventsByMonth[month] || ['Nenhum evento disponível para este mês.'];
+        eventList.innerHTML = events.map(event => `<li>${event}</li>`).join('');
+    }
+</script>
+
+</body>
+</html>

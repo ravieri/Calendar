@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+    <html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Jogos em Destaque</title>
+        <link rel="icon" href="favicon.jpg" type="image/x-icon"> <!-- Linha do favicon adicionada -->
+        <link rel="stylesheet" href="styles.css">
+       
+        </head>
+    <body>
+        <header>
+            <img src="h2bet_logo.png" alt="H2BET" class="header-logo"> 
+            <div class="header-title">
+                <span class="highlight-link" onclick="location.href='events.html'">Ligas em Destaque</span>
+            </div>
+        </header>
+        <h1>Jogos em Destaque</h1>
+
+        <!-- Carrossel de Jogos em Destaque -->
+        <div class="carousel-container" id="carousel-container">
+            <div class="carousel-slide" id="carousel-slide">
+                <!-- Jogo 1 -->
+                <div class="carousel-item">
+                    <h3>
+                        <img src="https://ssl.gstatic.com/onebox/media/sports/logos/hVv2tWVGqcgg_W-j_oputw_48x48.png"> Tombense 
+                        <img src="https://ssl.gstatic.com/onebox/media/sports/logos/q9fhEsgpuyRq58OgmSndcQ_48x48.png"> Atlético-MG
+                    </h3>
+                    <p>Data: 25/02/2025</p>
+                    <p>Horário: 19:00</p>
+                    <p>Local: Brasil</p>
+                    <p>Descrição: Campeonato Mineiro - Meia-final - 2ª mão de 2</p>
+                </div>
+                
+                <div class="carousel-item">
+                    <h3>
+                        <img src="https://ssl.gstatic.com/onebox/media/sports/logos/Ku-73v_TW9kpex-IEGb0ZA_48x48.png"> Grêmio 
+                        <img src="https://ssl.gstatic.com/onebox/media/sports/logos/q9fhEsgpuyRq58OgmSndcQ_48x48.png"> Atlético-MG
+                    </h3>
+                    <p>Data: 29/03/2025</p>
+                    <p>Horário: A definir</p>
+                    <p>Local: Brasil</p>
+                    <p>Descrição: Campeonato Mineiro - Final - 1ª mão de 2</p>
+                </div>
+                
+                <div class="carousel-item">
+                    <h3>
+                        <img src="https://ssl.gstatic.com/onebox/media/sports/logos/q9fhEsgpuyRq58OgmSndcQ_48x48.png"> Atlético-MG 
+                        <img src="https://ssl.gstatic.com/onebox/media/sports/logos/S861eZfMqq4V7d3tRQuyIg_48x48.png"> Manaus
+                    </h3>
+                    <p>Data: 05/03/2025</p>
+                    <p>Horário: A definir</p>
+                    <p>Local: Brasil</p>
+                    <p>Descrição: Copa do Brasil - Segunda rodada</p>
+                </div>
+                
+                <div class="carousel-item">
+                    <h3>
+                        <img src="https://ssl.gstatic.com/onebox/media/sports/logos/q9fhEsgpuyRq58OgmSndcQ_48x48.png"> Atlético-MG 
+                        <img src="https://ssl.gstatic.com/onebox/media/sports/logos/4w2Z97Hf9CSOqICK3a8AxQ_48x48.png"> São Paulo
+                    </h3>
+                    <p>Data: 05/04/2025</p>
+                    <p>Horário: A definir</p>
+                    <p>Local: Brasil</p>
+                    <p>Descrição: Copa do Brasil - Segunda rodada</p>
+                </div>
+            </div>
+            <button class="carousel-button left" onclick="prevSlide()">&#10094;</button>
+            <button class="carousel-button right" onclick="nextSlide()">&#10095;</button>
+        </div>
+        </div>
+    
+        <!-- Seletor de Intervalo de Datas -->
+        <div class="month-selector-container">
+            <label for="date">Selecionar intervalo de datas:</label>
+            <select id="date" class="custom-month-selector" onchange="showSports()">
+                <option value="1">25/01/2025 - 31/01/2025</option>
+                <option value="2">01/02/2025 - 07/02/2025</option>
+                <option value="3">08/02/2025 - 14/02/2025</option>
+                <option value="4">15/02/2025 - 21/02/2025</option>
+                <option value="5">22/02/2025 - 28/02/2025</option>
+                <option value="6">01/03/2025 - 07/03/2025</option>
+                <option value="7">08/03/2025 - 14/03/2025</option>
+            </select>
+        </div>
+    
+        <!-- Container dos Esportes -->
+        <div id="sports" class="sports" style="display:none;">
+            <h2 class="sports-title">ESPORTES DISPONÍVEIS:</h2>
+            <div class="sports-buttons">
+                <button class="sport-btn" onclick="showSportImage('futebol')">
+                    <img src="https://img.icons8.com/?size=100&id=59&format=png&color=000000" alt="Futebol" class="btn-icon"> Futebol
+                </button>
+                <button class="sport-btn" onclick="showSportImage('tennis')">
+                    <img src="https://img.icons8.com/ios-filled/50/000000/tennis.png" alt="Tênis" class="btn-icon"> Tênis
+                </button>
+                <button class="sport-btn" onclick="showSportImage('basquete')">
+                    <img src="https://img.icons8.com/ios-filled/50/000000/basketball.png" alt="Basquete" class="btn-icon"> Basquete
+                </button>
+                <button class="sport-btn" onclick="showSportImage('cs')">
+                    <img src="https://img.icons8.com/?size=100&id=jzahITKncvRL&format=png&color=000000" alt="CS 2.0" class="btn-icon"> CS 2.0
+                </button>
+                <button class="sport-btn" onclick="showSportImage('mma')">
+                    <img src="https://img.icons8.com/?size=100&id=rgCIVaH3hOXV&format=png&color=000000" alt="MMA" class="btn-icon"> MMA
+                </button>
+            </div>
+        </div>
+    
+        <!-- Container da Imagem do Esporte -->
+        <div id="sport-image" class="sport-image" style="display:none;">
+            <h2>Imagem do Esporte:</h2>
+            <div id="sport-img-container">
+                <!-- As imagens dos esportes serão adicionadas aqui dinamicamente -->
+            </div>
+        </div>
+        <script src="script.js"></script>
+    </body>
+    </html>

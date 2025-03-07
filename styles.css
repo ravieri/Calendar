@@ -1,0 +1,583 @@
+/* Estilos gerais */
+
+.highlight-link {
+    font-size: 20px; /* Define o tamanho da letra */
+    color: #ffdd57; /* Cor do texto */
+    cursor: pointer; /* Cursor de ponteiro ao passar o mouse */
+    text-decoration: none; /* Remove o sublinhado */
+    transition: color 0.3s ease, transform 0.3s ease; /* Transições suaves */
+}
+
+.highlight-link:hover {
+    color: #ffd700; /* Cor do texto ao passar o mouse */
+    transform: scale(1.1); /* Aumenta levemente o tamanho ao passar o mouse */
+}
+
+.highlight-link:active {
+    color: #ffa500; /* Cor do texto ao clicar */
+    transform: scale(0.95); /* Reduz levemente o tamanho ao clicar */
+}
+
+body, html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: #1a1a2e;
+    font-family: 'Arial', sans-serif;
+    color: #ffffff;
+}
+
+header {
+    background-color: rgba(0, 0, 0, 0.5); /* Transparente */
+    padding: 28px;
+    text-align: center;
+    border-bottom: 2px solid #494973;
+    position: fixed; /* Fixo no topo */
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    transition: box-shadow 0.3s ease;
+}
+
+.header-logo {
+    width: 80px;
+}
+
+h1 {
+    color: white;
+    font-size: 36px;
+    text-align: center;
+    margin-top: 80px; /* Ajuste para compensar o header fixo */
+}
+
+/* Carrossel de Destaque */
+.carousel-container {
+    position: relative;
+    max-width: 500px;
+    margin: 30px auto;
+    overflow: hidden;
+    border-radius: 8px;
+    background-color: #1a1a2e;
+    color: #ffffff;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+    transition: background-color 1s ease; /* Transição suave para a cor de fundo */
+}
+
+.carousel-slide {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.carousel-item {
+    min-width: 100%;
+    box-sizing: border-box;
+    padding: 20px;
+    text-align: center;
+}
+
+.carousel-item h3 {
+    font-size: 20px;
+    color: #ffdd57;
+}
+
+/* Ajuste do tamanho dos ícones */
+.carousel-item h3 img {
+    width: 32px; /* Reduz o tamanho para 32px */
+    height: 32px;
+}
+
+/* Botões de navegação */
+.carousel-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #ffffff;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 18px;
+    border-radius: 50%;
+}
+
+.carousel-button.left {
+    left: 10px;
+}
+
+.carousel-button.right {
+    right: 10px;
+}
+
+/* Estilos para o seletor de datas e esportes */
+.month-selector-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+.custom-month-selector {
+    padding: 10px;
+    font-size: 16px;
+    color: #ffffff;
+    background-color: #6a0dad;
+    border: 2px solid #ffffff;
+    border-radius: 5px;
+    margin-top: 10px;
+    width: 250px;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+.custom-month-selector:hover {
+    background-color: #9a4cdd;
+}
+
+/* Botões de esportes */
+.sport-btn {
+    background: linear-gradient(135deg, #6a0dad, #494973);
+    color: white;
+    padding: 15px 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    margin: 5px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.sport-btn:hover {
+    background: linear-gradient(135deg, #9a4cdd, #6161a2);
+    transform: scale(1.1);
+}
+
+.sport-btn:active {
+    transform: scale(0.98);
+    background-color: #7e41c4;
+}
+
+/* Área da imagem com borda */
+.sport-image {
+    border-radius: 10px;
+    padding: 15px;
+    background-color: #282846;
+    margin: 20px auto;
+    text-align: center;
+    max-width: 1000px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+.sport-image img {
+    border-radius: 8px;
+    border: 2px solid #494973;
+    max-width: 100%;
+    height: auto;
+}
+
+/* Estilo do canvas de neve */
+#snowCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1000;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #1a1a2e; /* Fundo escuro */
+    color: #ffffff; /* Texto claro */
+}
+
+.header-logo:hover {
+    transform: scale(1.1) rotate(-5deg);
+    transition: transform 0.3s ease;
+}
+
+.header-logo {
+    position: absolute; /* Faz o logo flutuar na posição */
+    left: 20px; /* Distância do lado esquerdo */
+    top: 20px; /* Distância do topo */
+    width: 100px; /* Ajuste a largura do logo conforme necessário */
+}
+
+/* Estilos para as abas e o conteúdo das abas no calendário */
+.tabs-container, .sub-tabs-container {
+    background-color: #282846;
+    padding: 10px;
+}
+
+.tab, .sub-tab {
+    display: inline-block;
+    cursor: pointer;
+    padding: 10px 20px;
+    margin: 0 5px;
+    background-color: #3b3b5e;
+    color: white;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Animações */
+}
+
+.tab:hover, .sub-tab:hover {
+    background-color: #494973;
+    transform: scale(1.05); /* Aumenta levemente o tamanho */
+}
+
+.tab-content, .sub-tab-content {
+    display: none;
+    padding: 10px;
+    background-color: #2d2d4f;
+    border: 1px solid #494973;
+    margin-top: 10px;
+    border-radius: 5px;
+}
+
+.tab-content.active, .sub-tab-content.active {
+    display: block;
+}
+
+.tab-active, .sub-tab-active {
+    background-color: #6161a2; /* Cor ao ativar */
+    color: #ffffff;
+    transform: scale(1.05);
+}
+
+.button-active {
+    background-color: #494973; /* Cor ao clicar */
+    transform: scale(0.95); /* Reduz levemente o tamanho ao clicar */
+    transition: transform 0.1s ease; /* Adiciona animação suave ao efeito de pressionamento */
+}
+
+/* Estilos para o seletor de mês e lista de eventos */
+.month-selector-container {
+    margin: 20px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+}
+
+.custom-month-selector {
+    padding: 10px 15px;
+    margin-left: 10px;
+    font-size: 16px;
+    color: #ffffff;
+    background-color: #6a0dad; /* Roxo escuro */
+    border: 2px solid #ffffff;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.custom-month-selector:hover {
+    background-color: #9a4cdd; /* Tom de roxo mais claro no hover */
+    color: #ffffff;
+}
+
+.custom-month-selector:focus {
+    outline: none;
+    border-color: #9a4cdd;
+    box-shadow: 0 0 5px rgba(154, 76, 221, 0.6);
+}
+
+.events {
+    margin-top: 20px;
+    padding: 0 20px;
+}
+
+.custom-event-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 20px 0;
+}
+
+.custom-event-list li {
+    background-color: #2d2d4f;
+    margin-bottom: 10px;
+    padding: 15px;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.custom-event-list li:hover {
+    background-color: #3b3b5e;
+}
+
+/* Estilos para o seletor de datas */
+.date-selector-container {
+    margin: 20px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+}
+.custom-date-selector {
+    padding: 10px 15px;
+    margin-left: 10px;
+    font-size: 16px;
+    color: #ffffff;
+    background-color: #6a0dad; /* Roxo escuro */
+    border: 2px solid #ffffff;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.custom-date-selector:hover {
+    background-color: #9a4cdd; /* Tom de roxo mais claro no hover */
+    color: #ffffff;
+}
+
+/* Estilos para a lista de esportes */
+.sports-buttons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.sport-btn {
+    background-color: #3b3b5e;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    margin: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.sport-btn:hover {
+    background-color: #494973;
+    transform: scale(1.05);
+}
+
+/* Efeito de destaque para o botão ativo */
+.sport-btn.active {
+    background-color: #494973;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    transform: scale(1.05);
+    color: #ffffff;
+}
+
+.sport-image {
+    display: flex;
+    justify-content: center; /* Centraliza as imagens */
+    align-items: center;
+    margin-top: 40px;
+}
+
+.sport-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+/* Limite de tamanho das imagens */
+.sport-image img {
+    max-width: 90%; /* Garante que as imagens não ocupem mais de 90% da largura */
+    height: auto;
+}
+
+/* Animação de fade-in */
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeIn 0.5s forwards;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Estilos para o ícone de carregamento */
+.loading-spinner {
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    border-top: 4px solid #6a0dad;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    margin: auto;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.tab-content, .sub-tab-content {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.tab-content.active, .sub-tab-content.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.sport-btn {
+    display: flex;
+    align-items: center;
+    background-color: #3b3b5e;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    margin: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.sport-btn:hover {
+    background-color: #494973;
+    transform: scale(1.05);
+}
+
+.btn-icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 8px;
+}
+
+#sport-img-container {
+    border: 2px solid #494973;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 0 10px rgba(106, 13, 173, 0.5), 0 0 20px rgba(106, 13, 173, 0.3);
+    animation: glow 2s infinite alternate;
+    width: 90%; /* Aumenta a largura para 90% da área disponível */
+    max-width: 1250px; /* Aumenta o limite máximo para telas grandes */
+    margin: 0 auto; /* Centraliza o contêiner */
+}
+
+@keyframes glow {
+    0% { box-shadow: 0 0 10px rgba(106, 13, 173, 0.3), 0 0 15px rgba(106, 13, 173, 0.2); }
+    100% { box-shadow: 0 0 15px rgba(106, 13, 173, 0.6), 0 0 25px rgba(106, 13, 173, 0.4); }
+}
+
+#sport-img-container img {
+    transition: transform 0.3s ease; /* Transição suave para o efeito de zoom */
+}
+
+#sport-img-container img:hover {
+    transform: scale(1.25); /* Aumenta levemente o zoom ao passar o mouse */
+}
+
+h2 {
+    font-size: 24px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #ab4cf0;
+    text-align: center;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #494973;
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+.sport-btn {
+    background: linear-gradient(135deg, #6a0dad, #3b3b5e);
+    color: white;
+    border: none;
+    border-radius: 25px;
+    padding: 12px 24px;
+    margin: 8px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.sport-btn:hover {
+    background: linear-gradient(135deg, #9b5ed4, #4d4d7e);
+    transform: scale(1.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.sport-btn:active {
+    transform: scale(0.95);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Fundo animado com gradiente */
+body {
+    background: linear-gradient(135deg, #22011c, #9805a5c4);
+    background-size: 400% 400%;
+    animation: backgroundMove 10s infinite alternate;
+}
+
+@keyframes backgroundMove {
+    0% { background-position: 0% 0%; }
+    100% { background-position: 100% 100%; }
+}
+
+/* Fundo com várias linhas de texto animado */
+.animated-text-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1;
+    display: grid;
+    grid-template-rows: repeat(6, 1fr); /* Cria 6 linhas de H2 */
+    opacity: 0.1; /* Ajusta a opacidade para um fundo visível, mas não muito forte */
+    pointer-events: none;
+}
+
+/* Cada linha de texto H2 animada */
+.animated-text-background div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    white-space: nowrap;
+    font-size: 120px;
+    color: #ffffff;
+    animation: moveText 20s linear infinite;
+}
+
+/* Pequenos atrasos para cada linha, criando um efeito escalonado */
+.animated-text-background div:nth-child(odd) {
+    animation-delay: 0s;
+}
+
+.animated-text-background div:nth-child(even) {
+    animation-delay: 10s;
+}
+
+/* Animação do movimento do texto */
+@keyframes moveText {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+}
+
+/* Centralizar o contêiner de esportes */
+.sports {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+/* Estilo para o título */
+.sports-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #9b5ed4;
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.team-icon {
+    width: 24px;
+    height: 24px;
+    vertical-align: middle;
+    margin-right: 5px;
+}

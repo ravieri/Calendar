@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bem-vindo</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #1a1a2e; /* Cor de fundo */
+        }
+        .splash-container {
+            text-align: center;
+            width: 100%;
+            height: 100%;
+            overflow: hidden; /* Garante que a imagem não saia da tela */
+            position: relative;
+        }
+        .splash-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Faz a imagem preencher a tela */
+        }
+
+        /* Barra de progresso */
+        .progress-bar-container {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background-color: #494973;
+        }
+        .progress-bar {
+            height: 100%;
+            width: 0;
+            background-color: #ffdd57;
+            transition: width 3s linear; /* Animação da barra de progresso */
+        }
+
+        /* Animação da bola de futebol */
+        .soccer-ball {
+            position: absolute;
+            bottom: 10px;
+            left: 0;
+            width: 30px;
+            height: 30px;
+            background-image: url('https://img.icons8.com/emoji/48/000000/soccer-ball-emoji.png'); /* Link da imagem da bola */
+            background-size: cover;
+            animation: bounce 0.5s infinite ease-in-out;
+        }
+
+        /* Animação de quicar */
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-15px);
+            }
+        }
+
+        /* Estilos para dispositivos móveis */
+        @media (max-width: 768px) {
+            .splash-container img {
+                height: auto; /* Para garantir que a altura se ajuste no mobile */
+                object-fit: contain; /* Mostra a imagem inteira no mobile sem cortar */
+            }
+        }
+
+        /* Estilos para telas muito grandes (desktop grandes) */
+        @media (min-width: 1440px) {
+            .splash-container img {
+                width: auto;
+                height: 100%; /* Faz a imagem preencher a altura da tela no desktop */
+                object-fit: cover; /* Mantém a proporção e cobre a tela */
+            }
+        }
+    </style>
+    <script>
+        // Redireciona para a página inicial após 3 segundos e anima a barra de progresso
+        window.onload = function() {
+            const progressBar = document.querySelector('.progress-bar');
+            const soccerBall = document.querySelector('.soccer-ball');
+
+            // Inicia a animação da barra de progresso
+            progressBar.style.width = '100%';
+
+            // Anima a bola de futebol junto com a barra de progresso
+            let start = null;
+            const duration = 3000; // 3 segundos
+            function animateBall(timestamp) {
+                if (!start) start = timestamp;
+                const progress = Math.min((timestamp - start) / duration, 1);
+                soccerBall.style.left = `calc(${progress * 100}% - 15px)`; // Move a bola ao longo da barra
+                if (progress < 1) {
+                    requestAnimationFrame(animateBall);
+                }
+            }
+            requestAnimationFrame(animateBall);
+
+            // Redireciona após 3 segundos
+            setTimeout(function() {
+                window.location.href = "home.html";
+            }, duration);
+        }
+    </script>
+</head>
+<body>
+    <div class="splash-container">
+        <img src="felizanonovoinicial.png" alt="H2.BET">
+        <div class="progress-bar-container">
+            <div class="progress-bar"></div>
+            <div class="soccer-ball"></div> <!-- Bola de futebol animada -->
+        </div>
+    </div>
+</body>
+</html>
